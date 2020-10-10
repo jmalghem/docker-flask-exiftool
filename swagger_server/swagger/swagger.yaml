@@ -1,0 +1,62 @@
+---
+swagger: "2.0"
+info:
+  description: "ExifTool Server"
+  version: "1.0.0"
+  title: "Swagger ExifTool Server"
+  termsOfService: ""
+  contact:
+    email: "jmalghem@gmail.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "localhost"
+basePath: "/api"
+tags:
+- name: "exiftool"
+  description: ""
+  externalDocs:
+    description: "Find out more"
+    url: "https://exiftool.org/"
+schemes:
+- "https"
+- "http"
+paths:
+  /exiftool:
+    post:
+      tags:
+      - "exiftool"
+      summary: "Examine a file with Exiftool"
+      description: ""
+      operationId: "add_exiftool"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "upfile"
+        in: "formData"
+        description: "The file to upload"
+        required: false
+        type: "file"
+      responses:
+        "200":
+          description: "successful upload"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      x-swagger-router-controller: "swagger_server.controllers.exiftool_controller"
+definitions:
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      code: 0
+      type: "type"
+      message: "message"
