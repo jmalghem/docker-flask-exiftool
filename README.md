@@ -7,6 +7,8 @@ is an example of building a swagger-enabled Flask server.
 
 This example uses the [Connexion](https://github.com/zalando/connexion) library on top of Flask.
 
+This server allows to POST a file and get the result of the amazing [ExifTool by Phil Harvey](https://exiftool.org/) in JSON with the [Sven Marnach's PyExifTool parser](http://smarnach.github.io/pyexiftool/)
+
 ## Requirements
 Python 3.5.2+
 
@@ -18,10 +20,10 @@ pip3 install -r requirements.txt
 python3 -m swagger_server
 ```
 
-and open your browser to here:
+Sample usage (replace openjfx-13_linux-x64_bin-sdk.zip by the name of a file in your current directory):
 
 ```
-http://localhost:8080/api/ui/
+curl -v -F 'upfile=@openjfx-13_linux-x64_bin-sdk.zip' http://localhost:8080/api/exiftool
 ```
 
 Your Swagger definition lives here:
